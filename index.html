@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" data-framework="angularjs">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- JSPM -->
+  <!--<script src="jspm_packages/system.js"></script>-->
+  <!--<script src="config.js"></script>-->
+  <!--<script src="app.js"></script>-->
+  <!-- inject:js -->
+  <script src="jspm_packages/system.js"></script>
+  <script src="config.js"></script>
+  <script src="loadMain.js"></script>
+  <!-- endinject -->
+  <link type="text/css" rel="stylesheet" href="main.css">
+</head>
+<!-- DO NOT REMOVE class="100ll-app" IT IS USED BY PROTRACTOR IN E2E TESTING-->
+
+<body ng-app="100ll" class="100ll-app" layout="row" layout-fill>
+<md-sidenav id="sidenav" ng-if="sidebar==true" class="md-sidenav-left md-whiteframe-z2" md-component-id="left"
+            ui-view="sidebar">
+</md-sidenav>
+<div layout="column" flex>
+  <100ll-navbar></100ll-navbar>
+  <md-content style="position: relative" flex layout="column">
+
+    <div layout-padding flex layout="row" ui-view="main" class="md-default-theme"
+      ></div>
+
+    <md-fab-speed-dial id="bottom-fab" ng-if="bottomFab==true" md-direction="up" class="md-scale  md-fab-bottom-right "
+                       ui-view="bottomFab" ng-mouseenter="fab.isOpen=true" ng-mouseleave="fab.isOpen=false" md-open="fab.isOpen">
+    </md-fab-speed-dial>
+
+  </md-content>
+  <md-toolbar>
+    <p align="center" color="#FF0000">
+      <small>
+        100ll
+        <100ll-version></100ll-version>
+        (<a href="#">Changelog</a>)
+      </small>
+    </p>
+  </md-toolbar>
+</div>
+</body>
+</html>

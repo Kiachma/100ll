@@ -1,0 +1,67 @@
+@import "components/map/map";
+html, body{
+  background: #c2c2c2 !important;
+}
+$break-sm: 600px;
+$break-md: 960px;
+$break-lg: 1200px;
+.btnGroup {
+  font-size: 16px;
+  margin: 20px 0;
+  padding: 3px 15px 3px 15px;
+  color: rgb(49, 46, 46);
+  background-color: rgba(224, 224, 224, 0.96);
+  text-transform: none;
+  font-weight: 400;
+  min-width:100px;
+}
+.md-button.left {
+  border-radius: 10px 0 0 10px;
+}
+.md-button.middle {
+  border-radius: 0;
+  border-left: 1px solid rgba(230, 230, 230, 0.96);
+  border-right: 1px solid rgba(230, 230, 230, 0.96);
+}
+.md-button.right {
+  border-radius: 0 10px 10px 0;
+}
+.md-button:not([disabled]):hover {
+  background-color: rgba(193, 193, 193, 0.96);
+  color: rgba(44, 65, 164, 0.96);
+  transition: 0.3s;
+}
+.md-subheader .md-subheader-content > *{
+  position: relative;
+  z-index: 10;
+}
+
+td {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+}
+#sidenav{
+  z-index: 10000;
+}
+
+#bottom-fab{
+  z-index: 10000;
+  position: fixed;
+  bottom:30px;
+  right:15px;
+
+  @media screen and (max-width: 700px) {
+    bottom:55px;
+  }
+  @media screen and (max-width: 400px) {
+    bottom:80px;
+  }
+
+}
+
+button > a {
+  color: currentColor;
+  text-decoration: none;
+}

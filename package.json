@@ -1,0 +1,131 @@
+{
+  "jspm": {
+    "directories": {},
+    "dependencies": {
+      "SimeonC/sc-date-time": "github:SimeonC/sc-date-time@^1.1.2",
+      "angular": "github:angular/bower-angular@^1.4.1",
+      "angular-cookies": "github:angular/bower-angular-cookies@^1.4.1",
+      "angular-dynamic-locale": "npm:angular-dynamic-locale@^0.1.27",
+      "angular-i18n": "npm:angular-i18n@^1.4.2",
+      "angular-local-storage": "npm:angular-local-storage@^0.2.2",
+      "angular-material": "github:angular/bower-material@master",
+      "angular-translate": "npm:angular-translate@^2.7.2",
+      "angular-translate-loader-static-files": "npm:angular-translate-loader-static-files@^2.7.2",
+      "angular-ui-router": "github:angular-ui/ui-router@^0.2.15",
+      "angular/bower-material": "github:angular/bower-material@master",
+      "css": "github:systemjs/plugin-css@^0.1.13",
+      "jasmine-jquery": "npm:jasmine-jquery@^2.1.0",
+      "jquery": "github:components/jquery@^2.1.4",
+      "lodash/lodash": "github:lodash/lodash@^3.9.3",
+      "moment": "npm:moment@^2.10.3",
+      "moment/moment-timezone": "github:moment/moment-timezone@^0.4.0",
+      "restangular": "github:mgonto/restangular@^1.5.1"
+    },
+    "devDependencies": {
+      "angular-mocks": "github:angular/bower-angular-mocks@^1.4.5",
+      "babel": "npm:babel-core@^5.1.13",
+      "babel-runtime": "npm:babel-runtime@^5.1.13",
+      "clean-css": "npm:clean-css@^3.3.5",
+      "core-js": "npm:core-js@^0.9.4",
+      "jasmine-core": "npm:jasmine-core@^2.3.4",
+      "jasmine-jquery": "npm:jasmine-jquery@^2.1.0",
+      "traceur": "github:jmcriffey/bower-traceur@0.0.88",
+      "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.88"
+    },
+    "overrides": {
+      "npm:jasmine-jquery@2.1.0": {
+        "main": "lib/jasmine-jquery.js"
+      },
+      "github:SimeonC/sc-date-time@1.1.2": {
+        "main": "dist/sc-date-time",
+        "shim": {
+          "dist/sc-date-time": {
+            "deps": [
+              "./sc-date-time.css!"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "devDependencies": {
+    "babel": "^5.2.17",
+    "del": "^1.2.0",
+    "event-stream": "^3.3.1",
+    "gulp": "^3.9.0",
+    "gulp-angular-architecture-graph": "0.0.3",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^2.2.0",
+    "gulp-csslint": "^0.1.5",
+    "gulp-git": "^1.2.4",
+    "gulp-htmlhint": "^0.1.1",
+    "gulp-inject": "^1.3.1",
+    "gulp-jshint": "^1.11.0",
+    "gulp-load-plugins": "^0.10.0",
+    "gulp-minify-html": "^1.0.3",
+    "gulp-ng-html2js": "^0.2.0",
+    "gulp-ngdocs": "^0.2.10",
+    "gulp-npm-run": "0.0.1",
+    "gulp-print": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.0.3",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.2.0",
+    "jasmine-reporters": "^2.0.7",
+    "jshint-stylish": "^2.0.1",
+    "jspm": "^0.15.7",
+    "karma": "^0.12.9",
+    "karma-babel-preprocessor": "^5.2.1",
+    "karma-chrome-launcher": "^0.1.3",
+    "karma-coffee-preprocessor": "^0.2.1",
+    "karma-coverage": "^0.2.4",
+    "karma-firefox-launcher": "^0.1.3",
+    "karma-jasmine": "^0.2.2",
+    "karma-jspm": "^1.1.5",
+    "karma-junit-reporter": "^0.2.2",
+    "karma-ng-html2js-preprocessor": "https://github.com/Kiachma/karma-ng-html2js-preprocessor.git#master",
+    "karma-phantomjs-launcher": "^0.2.0",
+    "phantomjs": "just-boris/phantomjs",
+    "protractor": "^2.0.0",
+    "protractor-http-mock": "^0.1.16",
+    "q": "^1.4.1",
+    "require-dir": "^0.3.0"
+  },
+  "scripts": {
+    "postinstall": "jspm install && jspm install --dev && jspm dl-loader",
+    "pree2eCI": "./node_modules/.bin/webdriver-manager update --standalone ",
+    "e2eCI": "./node_modules/.bin/protractor protractor/protractor.conf.js",
+    "jspm-bundle": "jspm bundle-sfx src/main bin/app.js"
+  },
+  "jshintConfig": {
+    "undef": true,
+    "jasmine": true,
+    "strict": false,
+    "node": true,
+    "jquery": true,
+    "unused": false,
+    "multistr": true,
+    "browser": true,
+    "esnext": true,
+    "predef": [
+      "angular",
+      "require"
+    ],
+    "globals": {
+      "jasmine": true,
+      "protractor": false,
+      "angular": true,
+      "browser": true,
+      "element": true,
+      "getJSONFixture": false,
+      "by": true,
+      "io": true,
+      "_": false,
+      "require": true,
+      "moment": false,
+      "EventSource": true,
+      "module": false,
+      "inject": false
+    }
+  }
+}
