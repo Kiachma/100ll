@@ -4,6 +4,6 @@
 //     element(by.model(credentials.user).sendKeys('andy'));
 //     element(by.model(credentials.password).sendKeys('andy'));
 //     element(by.id('login')).click();
-//     expect(element(by.id('100ll-profile-toolbar')).isPresent())
+//     expect(element(by.id('utsaSched-profile-toolbar')).isPresent())
 //   });
 // });

@@ -14,7 +14,7 @@ var dev = "src";
  */
 module.exports = {
   appFiles:{
-    js: ['src/**/*.js', '!src/**/*.spec.js', '!src/**/*.scenario.js', '!src/assets/**/*.js','!src/**/*.js!eval'],
+    js: ['src/**/*.js'],
     jsunit: ['src/**/*.spec.js'],
     e2e: ['src/**/*.scenario.js'],
 

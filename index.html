@@ -13,15 +13,16 @@
   <script src="loadMain.js"></script>
   <!-- endinject -->
   <link type="text/css" rel="stylesheet" href="main.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<!-- DO NOT REMOVE class="100ll-app" IT IS USED BY PROTRACTOR IN E2E TESTING-->
+<!-- DO NOT REMOVE class="utsa-sched-app" IT IS USED BY PROTRACTOR IN E2E TESTING-->
 
-<body ng-app="100ll" class="100ll-app" layout="row" layout-fill>
+<body ng-app="utsaSched" class="utsa-sched-app" layout="row" layout-fill>
 <md-sidenav id="sidenav" ng-if="sidebar==true" class="md-sidenav-left md-whiteframe-z2" md-component-id="left"
             ui-view="sidebar">
 </md-sidenav>
 <div layout="column" flex>
-  <100ll-navbar></100ll-navbar>
+  <utsa-sched-navbar></utsa-sched-navbar>
   <md-content style="position: relative" flex layout="column">
 
     <div layout-padding flex layout="row" ui-view="main" class="md-default-theme"
@@ -32,15 +33,15 @@
     </md-fab-speed-dial>
 
   </md-content>
-  <md-toolbar>
-    <p align="center" color="#FF0000">
-      <small>
-        100ll
-        <100ll-version></100ll-version>
-        (<a href="#">Changelog</a>)
-      </small>
-    </p>
-  </md-toolbar>
+  <!--<md-toolbar>-->
+    <!--<p align="center" color="#FF0000">-->
+      <!--<small>-->
+        <!--Schedule-->
+        <!--<utsa-sched-version></utsa-sched-version>-->
+        <!--(<a href="#">Changelog</a>)-->
+      <!--</small>-->
+    <!--</p>-->
+  <!--</md-toolbar>-->
 </div>
 </body>
 </html>

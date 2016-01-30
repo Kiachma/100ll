@@ -4,10 +4,10 @@ import 'angular-ui-router';
 import 'angular-breadcrumb';
 
 
-import 100llNavbar from './100llNavbar';
-import 100llLauncherIcon from './100llLauncherIcon';
+import utsaSchedNavbar from './utsaSchedNavbar';
+import utsaSchedLauncherIcon from './utsaSchedLauncherIcon';
 
-angular.module('100ll.core.navigator', [
+angular.module('utsaSched.core.navigator', [
   'ui.router', // used to navigate between states and urls
 ])
   .config(function ($stateProvider, $urlRouterProvider) {
@@ -16,20 +16,13 @@ angular.module('100ll.core.navigator', [
         url: '/login',
         views: {
           "main": {
-            template: '<100ll-login-form flex></100ll-login-form>'
+            template: '<utsaSched-login-form flex></utsaSched-login-form>'
           }
 
         }
       })
-      .state('eventlog', {
-        url: '/system/eventlog',
-        views: {
-          "main": {
-            template: '<100ll-eventlog flex></100ll-eventlog>'
-          }
-        }
-      });
-    $urlRouterProvider.otherwise('/system');
+     ;
+    $urlRouterProvider.otherwise('/schedule');
 
   })
   // Redirect to default child state
@@ -41,14 +34,14 @@ angular.module('100ll.core.navigator', [
       }
     });
   }])
-  .directive('100llNavbar', 100llNavbar)
+  .directive('utsaSchedNavbar', utsaSchedNavbar)
 
 /**
  * @ngdoc directive
- * @name 100ll.components.dashboard.100llLauncherIcon
+ * @name utsaSched.components.dashboard.utsaSchedLauncherIcon
  *
  * @restrict E
  * @description
  * Directive. A launcher icon, displaying an icon and an optional text.
  */
-  .directive('100llLauncherIcon', 100llLauncherIcon);
+  .directive('utsaSchedLauncherIcon', utsaSchedLauncherIcon);

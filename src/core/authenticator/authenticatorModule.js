@@ -2,15 +2,15 @@ import angular from 'angular';
 
 import 'angular-cookies';
 
-import 100llAuthService from './100llAuthService';
-import 100llAuthInterceptor from './100llAuthInterceptor';
-import 100llProfileToolbar from './100llProfileToolbar';
-import 100llLoginForm from './100llLoginForm';
-import 100llAccessRights from './100llAccessRights';
+import utsaSchedAuthService from './utsaSchedAuthService';
+import utsaSchedAuthInterceptor from './utsaSchedAuthInterceptor';
+import utsaSchedProfileToolbar from './utsaSchedProfileToolbar';
+import utsaSchedLoginForm from './utsaSchedLoginForm';
+import utsaSchedAccessRights from './utsaSchedAccessRights';
 
 /**
  * @ngdoc overview
- * @name 100ll.core.authenticator
+ * @name utsaSched.core.authenticator
  *
  * @description
  * # Authenticator Module
@@ -18,61 +18,61 @@ import 100llAccessRights from './100llAccessRights';
  * Includes Auth utilities
  *
  */
-angular.module('100ll.core.authenticator', [
+angular.module('utsaSched.core.authenticator', [
   'ngCookies' // Used to store the token
 ])
   .config(function ($httpProvider) {
-    $httpProvider.interceptors.push('100llAuthInterceptor');
+    $httpProvider.interceptors.push('utsaSchedAuthInterceptor');
   })
 /**
  * @ngdoc service
- * @name 100ll.core.authenticator.100llAuthService
+ * @name utsaSched.core.authenticator.utsaSchedAuthService
  *
  * @description
  * Service. Manages user authentication.
  */
-  .service('100llAuthService', 100llAuthService)
+  .service('utsaSchedAuthService', utsaSchedAuthService)
 /**
  * @ngdoc directive
- * @name 100ll.core.authenticator.100llProfileToolbar
+ * @name utsaSched.core.authenticator.utsaSchedProfileToolbar
  *
  * @restrict E
  * @description
  * Directive. A toolbar for quick access to actions and info for the currently logged in user
  */
-  .directive('100llProfileToolbar', 100llProfileToolbar)
+  .directive('utsaSchedProfileToolbar', utsaSchedProfileToolbar)
 /**
  * @ngdoc directive
- * @name 100ll.core.authenticator.100llAccessRights
+ * @name utsaSched.core.authenticator.utsaSchedAccessRights
  *
  * @restrict A
  * @description
  * Directive. Directive to hide features that the user does not have the access rights to use. If the user has any of the rights the element will be shown.
  *
- * @param {string} 100llAccessRights Resource and access rights separated by 'comma', more than one right for a resource can be separated by |
+ * @param {string} utsaSchedAccessRights Resource and access rights separated by 'comma', more than one right for a resource can be separated by |
  *
  * @example
- * var 100llAccessRights = "system:all|view, user:all|view|list"
+ * var utsaSchedAccessRights = "system:all|view, user:all|view|list"
  *
  */
-  .directive('100llAccessRights', 100llAccessRights)
+  .directive('utsaSchedAccessRights', utsaSchedAccessRights)
 /**
  * @ngdoc directive
- * @name 100ll.core.authenticator.100llLoginForm
+ * @name utsaSched.core.authenticator.utsaSchedLoginForm
  *
  * @restrict E
  * @description
  * Directive. Login form.
  *
  */
-  .directive('100llLoginForm', 100llLoginForm)
+  .directive('utsaSchedLoginForm', utsaSchedLoginForm)
 
 /**
  * @ngdoc service
- * @name 100ll.core.authenticator.100llAuthInterceptor
+ * @name utsaSched.core.authenticator.utsaSchedAuthInterceptor
  *
  * @description
  * Interceptor. Intercepts the $http service calls and injects the auth token
  *
  */
-  .factory('100llAuthInterceptor', 100llAuthInterceptor);
+  .factory('utsaSchedAuthInterceptor', utsaSchedAuthInterceptor);

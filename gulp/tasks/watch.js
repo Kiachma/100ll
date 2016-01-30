@@ -18,18 +18,18 @@ gulp.task('watch',['serve','validate-scripts','validate-html','validate-gulp','v
 
 
   // watch app scripts
-  gulp.watch(config.appFiles.js, { interval: 500 },['validate-scripts','test','reload']);
+  //gulp.watch(config.appFiles.js, { interval: 500 },['validate-scripts','test','reload']);
 
   // watch html
-  gulp.watch(config.appFiles.html, { interval: 500 },['validate-html','reload']);
+  //gulp.watch(config.appFiles.html, { interval: 500 },['validate-html','reload']);
   // watch gulp
-  gulp.watch(config.gulpfiles, { interval: 500 },['validate-gulp']);
+  //gulp.watch(config.gulpfiles, { interval: 500 },['validate-gulp']);
 
   // watch tests
-  gulp.watch(config.appFiles.jsunit, { interval: 500 },['validate-tests','test'] );
+  //gulp.watch(config.appFiles.jsunit, { interval: 500 },['validate-tests','test'] );
 
   //watch Sass
-  gulp.watch(config.appFiles.sass, { interval: 500 },['sass','reload']);
+  //gulp.watch(config.appFiles.sass, { interval: 500 },['sass','reload']);
 
 });
 
@@ -37,8 +37,8 @@ gulp.task('watch',['serve','validate-scripts','validate-html','validate-gulp','v
  * Reload live reload if html or js files have been changed
  */
 gulp.task('reload',['version'] ,function () {
-  return gulp.src(config.appFiles.html,config.appFiles.js)
-    .pipe(plugins.connect.reload());
+  //return gulp.src(config.appFiles.html,config.appFiles.js)
+  //  .pipe(plugins.connect.reload());
 });
 
 

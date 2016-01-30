@@ -17,7 +17,7 @@ gulp.task('ngdocs', function () {
   var options = {
     html5Mode: false,
     startPage: '/api',
-    title: "100ll",
+    title: "utsaSched",
     titleLink: "/docs",
   };
   return gulp.src(config.appFiles.js)

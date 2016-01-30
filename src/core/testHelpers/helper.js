@@ -10,7 +10,7 @@ let helper = {
   inject: angular.mock.inject
 };
 moment.tz.setDefault("Europe/Oslo");
-beforeEach(angular.mock.module('100ll.core',function ($provide, $translateProvider) {
+beforeEach(angular.mock.module('utsaSched.core',function ($provide, $translateProvider) {
 
   $provide.factory('customLoader', function ($q) {
     return function () {

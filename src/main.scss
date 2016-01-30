@@ -1,4 +1,5 @@
-@import "components/map/map";
+@import "components/schedule/schedule";
+
 html, body{
   background: #c2c2c2 !important;
 }
@@ -64,4 +65,40 @@ td {
 button > a {
   color: currentColor;
   text-decoration: none;
+}
+.success{
+  color:#4CAF50 !important;
+}
+.error{
+  color:#F44336 !important;
+}
+.warn{
+  color:#FF9800 !important;
+}
+
+table[md-data-table].custom-colors > tbody > tr.success > td {
+  color:#4CAF50 !important;
+}
+
+table[md-data-table].custom-colors > tbody > tr.error > td {
+  color:#F44336 !important;
+}
+
+
+table[md-data-table].custom-colors > tbody > tr.active > td {
+  background-color :#DCEDC8 !important;
+}
+
+table[md-data-table].custom-colors > tbody > tr.warn > td {
+  color:#FF9800 !important;
+}
+table[md-data-table].custom-colors > tbody > tr.odd-day  {
+  background-color:#F5F5F5 ;
+}
+
+table[md-data-table].custom-colors > tbody > tr.odd-day:hover {
+  background-color: #eeeeee !important;
+}
+.toolbar-small-text{
+  font-size:15px
 }

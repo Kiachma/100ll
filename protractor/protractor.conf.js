@@ -41,7 +41,7 @@ exports.config = {
   // to proractor (in this example confs.js).
   // They may include glob patterns.
   specs: ['../src/**/*scenario.js'],
-  rootElement: '.100ll-app',
+  rootElement: '.UtsaSched-app',
   onPrepare: function () {
     jasmine.getEnv().addReporter(new jasmineReporters.JUnitXmlReporter({
       savePath: 'test-results',

@@ -1,13 +1,12 @@
 // Import AngularJS
 import angular from 'angular';
 
-// Import 100ll Core
+// Import UtsaSched Core
 import './core/coreModule';
 
-// Import 100ll Components
+// Import UtsaSched Components
+import './components/schedule/scheduleModule';
 
-// Import Apps
-import './apps/appsModule';
 
 /**
  * Try to import templates module (used in production)
@@ -20,26 +19,27 @@ try {
 }
 /**
  * @ngdoc overview
- * @name 100ll
+ * @name UtsaSched
  *
  * @description
- * # 100ll - 100ll
- * @requires 100ll.core
+ * # UtsaSched - UtsaSched
+ * @requires UtsaSched.core
  * @requires templates-app
- * @requires 100ll.components.eventlog
- * @requires 100ll.components.system
- * @requires 100ll.components.usermanager
- * @requires 100ll.components.map
- * This is the main module for the 100ll.
- * The core platform is located in the {@link 100ll.core} module
- * Other modules are located in the 100ll.components.* packages.
+ * @requires UtsaSched.components.eventlog
+ * @requires UtsaSched.components.system
+ * @requires UtsaSched.components.usermanager
+ * @requires UtsaSched.components.map
+ * This is the main module for the UtsaSched.
+ * The core platform is located in the {@link UtsaSched.core} module
+ * Other modules are located in the UtsaSched.components.* packages.
  *
  */
-var 100llApp = angular.module('100ll', [
+var UtsaSchedApp = angular.module('utsaSched', [
 
-  // Inject 100ll Core
-  '100ll.core',
+  // Inject UtsaSched Core
+  'utsaSched.core',
   'templates-app',
-  // Inject 100ll Components
+  // Inject UtsaSched Components
+  'utsaSched.components.schedule'
   // Inject Apps Module
 ]);

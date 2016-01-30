@@ -1,0 +1,44 @@
+<md-dialog aria-label="flight.Student" ng-cloak>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>{{flight.EventStart | date : "EEE HH:mm" : "CET"}}-{{flight.DueBack | date : "HH:mm" : "CET"}}
+        {{flight.Student}}</h2>
+      <span flex></span>
+
+      <md-button class="md-icon-button" ng-click="cancel()">
+        <md-icon aria-label="Close dialog" md-font-set="material-icons">close
+        </md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content style="max-width:800px;max-height:810px; ">
+    <div class="md-dialog-content">
+      <p>
+        <strong>
+          Briefing</strong> {{flight.EventStart | date : "EEE HH:mm" : "CET"}}
+      </p>
+
+      <p><strong>Off block</strong> {{flight.OffBlock | date : "HH:mm" : "CET"}}</p>
+
+      <p><strong>Student </strong> {{flight.Student}}</p>
+
+      <p ng-if="backseat!=''"><strong>Backseat</strong> {{backseat}}</p>
+
+      <p><strong>Callsign </strong> {{flight.Callsign}}</p>
+
+      <p><strong>Instructor </strong> {{flight.Instructor}}</p>
+
+      <p><strong>Resource</strong> {{flight.Resource}}</p>
+
+      <p><strong>Status</strong> {{flight.Status}}</p>
+
+      <p><strong>Type</strong> {{flight.SubType}}</p>
+
+      <p><strong>Lesson</strong> {{flight.Lesson}}</p>
+
+      <p><strong>Destination </strong> {{flight.Destination}}</p>
+
+      <p><strong>Due back</strong> {{flight.DueBack | date : "HH:mm" : "CET"}}</p>
+    </div>
+  </md-dialog-content>
+</md-dialog>
