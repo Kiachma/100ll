@@ -1,0 +1,26 @@
+<!-- Toolbar navigator -->
+<md-toolbar md-scroll-shrink class="md-whiteframe-z3 " ng-class="{'md-warn': UtsaSchedScheduleService.data.condition == 'Standby','md-primary': UtsaSchedScheduleService.data.condition == 'Unrestricted','md-accent':UtsaSchedScheduleService.data.condition != 'Unrestricted' && UtsaSchedScheduleService.data.condition != 'Standby' }">
+  <div layout="row" id="navbar" >
+    <md-button id="toggle-sidebar" ng-if="sidebar==true" class="md-icon-button" aria-label="Toggle sidenav"
+               ng-click="navCtrl.toggleRight()">
+      <md-icon md-font-set="material-icons">menu</md-icon>
+      <md-tooltip>
+        <span translate="COMMON_TOGGLE_SIDEBAR"></span>
+      </md-tooltip>
+    </md-button>
+    <div flex>
+      <!--<utsa-sched-usermanager-toolbar></utsa-sched-usermanager-toolbar>-->
+      <utsa-sched-scheduler-toolbar layout="row" flex></utsa-sched-scheduler-toolbar>
+
+    </div>
+
+
+
+
+
+    <!-- fill the middle area -->
+
+
+  </div>
+</md-toolbar>
+<!-- Breadcrumb navigator -->

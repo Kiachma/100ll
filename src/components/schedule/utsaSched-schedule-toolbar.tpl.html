@@ -1,0 +1,42 @@
+<div ng-hide="showSearch" layout="row" class="md-toolbar-tools">
+  <h3 flex="5" hide-sm hide-md>Schedule</h3>
+  <md-switch class="toolbar-small-text" ng-model="UtsaSchedScheduleService.data.showCancelled"
+             aria-label="Show cancelled">
+    Cancelled
+  </md-switch>
+  <md-switch class="toolbar-small-text" ng-model="UtsaSchedScheduleService.data.showCompleted"
+             aria-label="Show completed">
+    Completed
+  </md-switch>
+  <span hide-sm hide-md class="toolbar-small-text"> {{UtsaSchedScheduleService.data.endu['Raw-Report']}}</span>
+  <span flex></span>
+  <md-button  class="md-icon-button" aria-label="Search" ng-click="showSearch = !showSearch">
+    <md-icon md-font-set="material-icons">search
+
+    </md-icon>
+  </md-button>
+  <div flex="auto" class="md-toolbar-tools" layout="row">
+
+
+
+    <md-icon hide-sm hide-md md-font-set="material-icons">cloud</md-icon>
+    <p hide-sm hide-md>{{UtsaSchedScheduleService.data.condition}}</p>
+
+    <md-icon hide-sm hide-md md-font-set="material-icons">access_time</md-icon>
+    <p hide-sm hide-md>{{ clock | date:'HH:mm:ss'}} {{ clock | date:'HH:mm:ss' : "UTC"}} </p>
+
+  </div>
+</div>
+<div ng-show="showSearch" class="md-toolbar-tools">
+
+  <md-button aria-label="Back" ng-click="showSearch = !showSearch">
+    <md-icon md-font-set="material-icons">arrow_back
+    </md-icon>
+  </md-button>
+
+  <md-input-container md-theme="input" flex>
+    <label>&nbsp;</label>
+    <input ng-model="searchText" placeholder="enter search">
+  </md-input-container>
+
+</div>

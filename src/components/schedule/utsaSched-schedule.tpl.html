@@ -1,0 +1,80 @@
+
+<div flex layout="row">
+  <table ng-cloak flex class="custom-colors" md-data-table md-progress="schedCtrl.UtsaSchedScheduleService.deferred">
+    <thead md-order="schedCtrl.order">
+    <tr>
+      <th name="Briefing" order-by="EventStart"></th>
+      <th hide-sm numeric name="Off block" order-by="OffBlock"></th>
+      <th numeric name="Student" order-by="Student"></th>
+      <th hide-sm hide-md numeric name="Callsign" order-by="Callsign"></th>
+      <th hide-sm numeric name="Instructor" order-by="Instructor"></th>
+      <th hide-sm numeric name="Resource" order-by="Resource"></th>
+      <th hide-sm hide-md numeric name="Status" order-by="Status"></th>
+      <th hide-sm hide-md numeric name="Type" order-by="SubType"></th>
+      <th hide-sm numeric name="Lesson" order-by="Lesson"></th>
+      <th hide-sm hide-md numeric name="Destination" order-by="Destination"></th>
+      <th hide-sm numeric name="Due back" order-by="DueBack"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-click="schedCtrl.showDialog(flight)"  ng-repeat="flight in schedCtrl.UtsaSchedScheduleService.data.flights | orderBy: schedCtrl.order | filter:searchText"
+        ng-class="{error: flight.Status == 'Cancelled',success: flight.Status == 'Completed','odd-day':!schedCtrl.isOddDay(flight.EventStart),active : schedCtrl.isActive(flight.EventStart,flight.DueBack)} "
+        ng-if="flight.Lesson!='Backseat'"
+         ng-cloak
+        ng-hide="(flight.Status== 'Cancelled' && !schedCtrl.UtsaSchedScheduleService.data.showCancelled ) || (flight.Status== 'Completed' && !schedCtrl.UtsaSchedScheduleService.data.showCompleted )">
+      <td >
+         {{flight.EventStart | date : "EEE HH:mm" : "CET"}}
+      </td>
+
+      <td hide-sm>
+        {{flight.OffBlock | date : "HH:mm" : "CET"}}
+      </td>
+
+      <td>
+        {{flight.Student}}
+          <span ng-if="schedCtrl.hasBackSeat(flight)" aria-label="backseat">
+            <md-icon md-font-set="material-icons">person
+
+              <md-tooltip md-direction="top">
+                {{schedCtrl.getBackSeat(flight)}}
+              </md-tooltip>
+            </md-icon>
+          </span>
+      </td>
+
+      <td hide-sm hide-md>
+        {{flight.Callsign}}
+      </td>
+
+      <td hide-sm>
+        {{flight.Instructor}}
+      </td>
+
+      <td hide-sm>
+        {{flight.Resource}}
+      </td>
+
+      <td hide-sm hide-md>
+        {{flight.Status}}
+      </td>
+
+      <td hide-sm hide-md>
+        {{flight.SubType}}
+        <span ng-if="flight.FlightType!='Flight'"> ({{flight.FlightType}})</span>
+      </td>
+
+      <td hide-sm>
+        {{flight.Lesson}}
+      </td>
+
+      <td hide-sm hide-md>
+        {{flight.Destination}}
+      </td>
+
+      <td hide-sm>
+        {{flight.DueBack | date : "HH:mm" : "CET"}}
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
