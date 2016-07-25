@@ -1,0 +1,31 @@
+<div layout="column" flex layout-align="center left">
+  <div layout="row" >
+    <h2>{{personalCtrl.printDate(personalCtrl.calendarDate)}}</h2>
+
+    <md-button
+      class="btn btn-primary"
+      mwl-date-modifier
+      date="personalCtrl.calendarDate"
+      decrement="personalCtrl.calendarView">
+      Previous
+    </md-button>
+    <md-button
+      class="btn btn-primary"
+      mwl-date-modifier
+      date="personalCtrl.calendarDate"
+      increment="personalCtrl.calendarView">
+      Next
+    </md-button>
+
+  </div>
+
+  <mwl-calendar flex
+                view="personalCtrl.calendarView"
+                view-date="personalCtrl.calendarDate"
+                events="personalCtrl.events"
+                day-view-start="07:00"
+                cell-is-open="true">
+  </mwl-calendar>
+
+
+</div>

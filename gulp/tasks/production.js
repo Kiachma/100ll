@@ -11,6 +11,7 @@ var gulp = require('gulp'),
 var plugins = gulpLoadPlugins();
 var config =  require('../config');
 var pipes = require('../utils/pipes').pipes;
+var cachebust = require('gulp-cache-bust');
 
 /**
  * Creates angular module app-templates in templates.js, that loads minified versions, of all *tpl.html files found in src, into $templateCache
@@ -92,6 +93,9 @@ pipes.index = function() {
       spare: true,
       quotes: true
 
+    }))
+    .pipe(cachebust({
+      type: 'timestamp'
     }))
     .pipe(gulp.dest(config.prodDir));
 };

@@ -1,5 +1,5 @@
 <md-dialog aria-label="flight.Student" ng-cloak>
-  <md-toolbar>
+  <md-toolbar ng-class="{'md-warn': flight.Status == 'Cancelled','md-primary': flight.Status == 'Completed','md-accent':flight.Status != 'Completed' && flight.condition != 'Cancelled' }">
     <div class="md-toolbar-tools">
       <h2>{{flight.EventStart | date : "EEE HH:mm" : "CET"}}-{{flight.DueBack | date : "HH:mm" : "CET"}}
         {{flight.Student}}</h2>

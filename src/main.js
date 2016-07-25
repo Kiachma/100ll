@@ -7,7 +7,6 @@ import './core/coreModule';
 // Import UtsaSched Components
 import './components/schedule/scheduleModule';
 
-
 /**
  * Try to import templates module (used in production)
  * If not defined create dummy module (Development)
@@ -34,7 +33,7 @@ try {
  * Other modules are located in the UtsaSched.components.* packages.
  *
  */
-var UtsaSchedApp = angular.module('utsaSched', [
+angular.module('utsaSched', [
 
   // Inject UtsaSched Core
   'utsaSched.core',

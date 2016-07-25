@@ -8,16 +8,17 @@ var plugins = gulpLoadPlugins();
 
 gulp.task('serve',[
   //'validate-scripts'
-],  function(done) {
+
+],  function() {
   plugins.connect.server({
-    root:  __dirname+'../../../',
+    root:  __dirname+'/../../',
     livereload: true
   });
-  done();
 });
-gulp.task('serve-prod',  function(done) {
+gulp.task('serve-prod',['prod'],  function(done) {
+
   plugins.connect.server({
-    root:  __dirname+'../../../',
+    root:  __dirname+'/../../bin',
   });
   done();
 });

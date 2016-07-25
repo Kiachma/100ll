@@ -1,37 +1,148 @@
+<div flex layout="column">
+  <md-button class="md-icon-button" ng-click="showColumnToggles=!showColumnToggles">
+    <md-icon md-font-set="material-icons">menu
+    </md-icon>
 
-<div flex layout="row">
-  <table ng-cloak flex class="custom-colors" md-data-table md-progress="schedCtrl.UtsaSchedScheduleService.deferred">
-    <thead md-order="schedCtrl.order">
-    <tr>
-      <th name="Briefing" order-by="EventStart"></th>
-      <th hide-sm numeric name="Off block" order-by="OffBlock"></th>
-      <th numeric name="Student" order-by="Student"></th>
-      <th hide-sm hide-md numeric name="Callsign" order-by="Callsign"></th>
-      <th hide-sm numeric name="Instructor" order-by="Instructor"></th>
-      <th hide-sm numeric name="Resource" order-by="Resource"></th>
-      <th hide-sm hide-md numeric name="Status" order-by="Status"></th>
-      <th hide-sm hide-md numeric name="Type" order-by="SubType"></th>
-      <th hide-sm numeric name="Lesson" order-by="Lesson"></th>
-      <th hide-sm hide-md numeric name="Destination" order-by="Destination"></th>
-      <th hide-sm numeric name="Due back" order-by="DueBack"></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-click="schedCtrl.showDialog(flight)"  ng-repeat="flight in schedCtrl.UtsaSchedScheduleService.data.flights | orderBy: schedCtrl.order | filter:searchText"
-        ng-class="{error: flight.Status == 'Cancelled',success: flight.Status == 'Completed','odd-day':!schedCtrl.isOddDay(flight.EventStart),active : schedCtrl.isActive(flight.EventStart,flight.DueBack)} "
-        ng-if="flight.Lesson!='Backseat'"
-         ng-cloak
-        ng-hide="(flight.Status== 'Cancelled' && !schedCtrl.UtsaSchedScheduleService.data.showCancelled ) || (flight.Status== 'Completed' && !schedCtrl.UtsaSchedScheduleService.data.showCompleted )">
-      <td >
-         {{flight.EventStart | date : "EEE HH:mm" : "CET"}}
-      </td>
+  </md-button>
+  <div layout="row">
 
-      <td hide-sm>
-        {{flight.OffBlock | date : "HH:mm" : "CET"}}
-      </td>
+    <div ng-show="showColumnToggles" layout="row">
+      <div layout-gt-lg="row" layout="column">
+        <md-switch ng-checked="schedCtrl.show('Day',schedCtrl.selected)"
+                   ng-click="schedCtrl.toggle('Day',schedCtrl.selected)">
+          Day
+        </md-switch>
+        <md-switch ng-checked="schedCtrl.show('Briefing',schedCtrl.selected)"
+                   ng-click="schedCtrl.toggle('Briefing',schedCtrl.selected)">
+          Briefing
+        </md-switch>
+        <md-switch ng-checked="schedCtrl.show('Off block',schedCtrl.selected)"
+                   ng-click="schedCtrl.toggle('Off block',schedCtrl.selected)">
+          Off block
+        </md-switch>
+        <md-switch ng-checked="schedCtrl.show('Student',schedCtrl.selected)"
+                   ng-click="schedCtrl.toggle('Student',schedCtrl.selected)">
+          Student
+        </md-switch>
+        <md-switch ng-checked="schedCtrl.show('Callsign',schedCtrl.selected)"
+                   ng-click="schedCtrl.toggle('Callsign',schedCtrl.selected)">
+          Call sign
+        </md-switch>
 
-      <td>
-        {{flight.Student}}
+        <md-switch ng-checked="schedCtrl.show('Instructor',schedCtrl.selected)"
+                   ng-click="schedCtrl.toggle('Instructor',schedCtrl.selected)">
+          Instructor
+        </md-switch>
+
+        <md-switch ng-checked="schedCtrl.show('Resource',schedCtrl.selected)"
+                   ng-click="schedCtrl.toggle('Resource',schedCtrl.selected)">
+          Resource
+        </md-switch>
+      </div>
+      <div layout-gt-lg="row" layout="column">
+        <md-switch ng-checked="schedCtrl.show('Status',schedCtrl.selected)"
+                   ng-click="schedCtrl.toggle('Status',schedCtrl.selected)">
+          Status
+        </md-switch>
+        <md-switch ng-checked="schedCtrl.show('Type',schedCtrl.selected)"
+                   ng-click="schedCtrl.toggle('Type',schedCtrl.selected)">
+          Type
+        </md-switch>
+        <md-switch ng-checked="schedCtrl.show('Lesson',schedCtrl.selected)"
+                   ng-click="schedCtrl.toggle('Lesson',schedCtrl.selected)">
+          Lesson
+        </md-switch>
+        <md-switch ng-checked="schedCtrl.show('Destination',schedCtrl.selected)"
+                   ng-click="schedCtrl.toggle('Destination',schedCtrl.selected)">
+          Destination
+        </md-switch>
+        <md-switch ng-checked="schedCtrl.show('Due back',schedCtrl.selected)"
+                   ng-click="schedCtrl.toggle('Due back',schedCtrl.selected)">
+          Due back
+        </md-switch>
+        <md-switch ng-checked="schedCtrl.show('Duration',schedCtrl.selected)"
+                   ng-click="schedCtrl.toggle('Duration',schedCtrl.selected)">
+          Duration
+        </md-switch>
+      </div>
+    </div>
+  </div>
+  <div flex layout="row">
+
+    <md-table-container flex>
+      <table flex class="custom-colors" md-table md-progress="schedCtrl.UtsaSchedScheduleService.deferred">
+        <thead md-head md-order="schedCtrl.order">
+        <tr md-row>
+          <th ng-show="schedCtrl.show('Day',schedCtrl.selected)" md-column>
+            Day
+          </th>
+          <th ng-show="schedCtrl.show('Briefing',schedCtrl.selected)" md-column md-order-by="EventStart">Briefing</th>
+          <th ng-show="schedCtrl.show('Off block',schedCtrl.selected)" md-column  md-numeric
+              md-order-by="OffBlock">Off block
+          </th>
+          <th ng-show="schedCtrl.show('Student',schedCtrl.selected)" md-column md-numeric md-order-by="Student">
+            Student
+          </th>
+          <th ng-show="schedCtrl.show('Callsign',schedCtrl.selected)" md-column
+              md-numeric md-order-by="Callsign">Callsign
+          </th>
+          <th ng-show="schedCtrl.show('Instructor',schedCtrl.selected)" md-column  md-numeric
+              md-order-by="Instructor">Instructor
+          </th>
+          <th ng-show="schedCtrl.show('Resource',schedCtrl.selected)" md-column  md-numeric
+              md-order-by="Resource">Resource
+          </th>
+          <th ng-show="schedCtrl.show('Status',schedCtrl.selected)" md-column   md-numeric
+              md-order-by="Status">Status
+          </th>
+          <th ng-show="schedCtrl.show('Type',schedCtrl.selected)" md-column   md-numeric
+              md-order-by="SubType">Type
+          </th>
+          <th ng-show="schedCtrl.show('Lesson',schedCtrl.selected)" md-column  md-numeric
+              md-order-by="Lesson">Lesson
+          </th>
+          <th ng-show="schedCtrl.show('Destination',schedCtrl.selected)" md-column
+              md-numeric md-order-by="Destination">Destination
+          </th>
+          <th ng-show="schedCtrl.show('Due back',schedCtrl.selected)" md-column  md-numeric
+              md-order-by="DueBack">Due back
+          </th>
+          <th ng-show="schedCtrl.show('Duration',schedCtrl.selected)" md-column
+              md-numeric>Duration
+          </th>
+
+        </tr>
+        </thead>
+        <tbody md-body>
+        <tr md-row
+
+            ng-repeat="flight in (schedCtrl.filtered = (schedCtrl.UtsaSchedScheduleService.data.flights | orderBy: schedCtrl.order | filter:searchText |switchFilters))"
+            ng-class="{error: schedCtrl.cancelled(flight.Status),success: schedCtrl.completed(flight.Status),odd: !($index%2),active : schedCtrl.isActive(flight.EventStart,flight.DueBack)} "
+
+
+            ng-cloak>
+          <td md-cell ng-show="schedCtrl.show('Day',schedCtrl.selected)">
+
+        <span
+          ng-if="schedCtrl.newDate(flight,$index)">
+          <b ng-if="schedCtrl.isToday(flight.EventStart)">
+            {{flight.EventStart | date : "EEE" : "CET"}}
+          </b>
+          <span ng-if="!schedCtrl.isToday(flight.EventStart)">{{flight.EventStart | date : "EEE" : "CET"}}</span>
+        </span>
+
+          </td>
+          <td md-cell ng-click="schedCtrl.showDialog(flight)" ng-show="schedCtrl.show('Briefing',schedCtrl.selected)">
+            {{flight.EventStart | date : "HH:mm" : "CET"}}
+          </td>
+
+          <td md-cell  ng-click="schedCtrl.showDialog(flight)"
+              ng-show="schedCtrl.show('Off block',schedCtrl.selected)">
+            {{flight.OffBlock | date : "HH:mm" : "CET"}}
+          </td>
+
+          <td md-cell ng-show="schedCtrl.show('Student',schedCtrl.selected)">
+            <a ui-sref="personal({callsign: flight.Identifier})">{{flight.Student}}</a>
           <span ng-if="schedCtrl.hasBackSeat(flight)" aria-label="backseat">
             <md-icon md-font-set="material-icons">person
 
@@ -40,41 +151,62 @@
               </md-tooltip>
             </md-icon>
           </span>
-      </td>
+          </td>
 
-      <td hide-sm hide-md>
-        {{flight.Callsign}}
-      </td>
+          <td md-cell    ng-show="schedCtrl.show('Callsign',schedCtrl.selected)">
+            <a ui-sref="personal({callsign: flight.Identifier})">{{flight.Callsign}}</a>
+          </td>
 
-      <td hide-sm>
-        {{flight.Instructor}}
-      </td>
+          <td md-cell  ng-click="schedCtrl.showDialog(flight)"
+              ng-show="schedCtrl.show('Instructor',schedCtrl.selected)">
+            {{flight.Instructor}}
+          </td>
 
-      <td hide-sm>
-        {{flight.Resource}}
-      </td>
+          <td md-cell  ng-show="schedCtrl.show('Resource',schedCtrl.selected)">
 
-      <td hide-sm hide-md>
-        {{flight.Status}}
-      </td>
+            <a ng-if="flight.FlightType=='Flight'"
+               href="https://www.flightradar24.com/data/airplanes/{{flight.Resource}}/"
+               target="_blank">
+              {{flight.Resource}}
+            </a>
+        <span ng-if="flight.FlightType!='Flight'">
+          {{flight.Resource}}
+        </span>
+          </td>
 
-      <td hide-sm hide-md>
-        {{flight.SubType}}
-        <span ng-if="flight.FlightType!='Flight'"> ({{flight.FlightType}})</span>
-      </td>
+          <td md-cell   ng-click="schedCtrl.showDialog(flight)"
+              ng-show="schedCtrl.show('Status',schedCtrl.selected)">
+            {{flight.Status}} <span
+            ng-if="flight.Status!='PRE-POST'">({{flight.Updated | date : "HH:mm" :  "CET"}})</span>
+          </td>
 
-      <td hide-sm>
-        {{flight.Lesson}}
-      </td>
+          <td md-cell   ng-click="schedCtrl.showDialog(flight)"
+              ng-show="schedCtrl.show('Type',schedCtrl.selected)">
+            {{flight.SubType}}
+            <span ng-if="flight.FlightType!='Flight'"> ({{flight.FlightType}})</span>
+          </td>
 
-      <td hide-sm hide-md>
-        {{flight.Destination}}
-      </td>
+          <td md-cell  ng-click="schedCtrl.showDialog(flight)"
+              ng-show="schedCtrl.show('Lesson',schedCtrl.selected)">
+            {{flight.Lesson}}
+          </td>
 
-      <td hide-sm>
-        {{flight.DueBack | date : "HH:mm" : "CET"}}
-      </td>
-    </tr>
-    </tbody>
-  </table>
+          <td md-cell    ng-click="schedCtrl.showDialog(flight)"
+              ng-show="schedCtrl.show('Destination',schedCtrl.selected)">
+            {{flight.Destination}}
+          </td>
+
+          <td md-cell  ng-click="schedCtrl.showDialog(flight)"
+              ng-show="schedCtrl.show('Due back',schedCtrl.selected)">
+            {{flight.DueBack | date : "HH:mm" : "CET"}}
+          </td>
+          <td md-cell    ng-click="schedCtrl.showDialog(flight)"
+              ng-show="schedCtrl.show('Duration',schedCtrl.selected)">
+            {{schedCtrl.duration(flight.OffBlock,flight.DueBack) }}
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </md-table-container>
+  </div>
 </div>

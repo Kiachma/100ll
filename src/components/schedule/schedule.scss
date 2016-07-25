@@ -1,0 +1,10 @@
+table[md-data-table] > tbody > tr{
+  height: 25px !important;
+}
+
+table.md-table tbody.md-body > tr.md-row, table.md-table tfoot.md-foot > tr.md-row {
+  height: 25px !important;
+}
+md-table-container > table > thead.md-head.ng-isolate-scope > tr{
+  height:30px !important;
+}

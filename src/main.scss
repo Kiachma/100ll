@@ -43,9 +43,7 @@ td {
   padding-top: 0.2em;
   padding-bottom: 0.2em;
 }
-#sidenav{
-  z-index: 10000;
-}
+
 
 #bottom-fab{
   z-index: 10000;
@@ -80,23 +78,23 @@ table[md-data-table].custom-colors > tbody > tr.success > td {
   color:#4CAF50 !important;
 }
 
-table[md-data-table].custom-colors > tbody > tr.error > td {
-  color:#F44336 !important;
+
+table.md-table td.md-cell{
+  color: inherit !important;
 }
 
-
-table[md-data-table].custom-colors > tbody > tr.active > td {
+ tr.active > td {
   background-color :#DCEDC8 !important;
 }
 
-table[md-data-table].custom-colors > tbody > tr.warn > td {
+tr.warn > td {
   color:#FF9800 !important;
 }
-table[md-data-table].custom-colors > tbody > tr.odd-day  {
+tr.odd > td {
   background-color:#F5F5F5 ;
 }
 
-table[md-data-table].custom-colors > tbody > tr.odd-day:hover {
+tr.odd:hover > td {
   background-color: #eeeeee !important;
 }
 .toolbar-small-text{

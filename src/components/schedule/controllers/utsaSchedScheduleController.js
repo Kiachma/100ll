@@ -7,32 +7,30 @@ class UtsaSchedScheduleController {
               $stateParams,
               $log,
               UtsaSchedScheduleService,
-              $mdDialog) {
+              $mdDialog,
+              $mdMedia) {
     var self = this;
     this.UtsaSchedScheduleService = UtsaSchedScheduleService;
-
+    this.$mdMedia = $mdMedia;
     this.$mdDialog = $mdDialog;
     this.selected = [];
     this.order = "EventStart"
-
     this.query = {
       filter: '',
       order: 'name',
       limit: 5,
       page: 1
     };
-
-    function success(desserts) {
-      this.desserts = desserts;
-    }
-
-    // in the future we may see a few built in alternate headers but in the mean time
-    // you can implement your own search header and do something like
-    this.search = function (predicate) {
-      this.filter = predicate;
-      this.deferred = $nutrition.desserts.get(this.query, success).$promise;
-    };
-
+    if ($mdMedia('gt-lg')) {
+      this.selected = ['Day', 'Briefing', 'Off block', 'Student', 'Callsign', 'Instructor', 'Resource', 'Status', 'Type', 'Lesson', 'Destination', 'Due back', 'Duration']
+    } else if ($mdMedia('gt-md')) {
+      this.selected = ['Day', 'Briefing', 'Off block', 'Student', 'Instructor', 'Resource', 'Status', 'Type', 'Lesson', 'Due back']
+    } else if ($mdMedia('gt-sm')) {
+      this.selected = ['Day', 'Briefing', 'Off block', 'Student', 'Instructor', 'Resource', 'Lesson']
+    } else if ($mdMedia('gt-xs')) {
+      this.selected = ['Day', 'Briefing', 'Student', 'Resource', 'Lesson']
+    } else {
+      this.selected = ['Day', 'Briefing', 'Student']    }
 
   }
 
@@ -46,7 +44,7 @@ class UtsaSchedScheduleController {
         flight: selected
       },
       resolve: {
-        backseat:()  => {
+        backseat: () => {
           return this.getBackSeat(selected);
         }
       }
@@ -74,6 +72,24 @@ class UtsaSchedScheduleController {
 
   }
 
+  newDate(date, key) {
+    if (key == 0) {
+      return true
+    }
+
+
+    var previousDate = this.filtered[key - 1];
+    return !moment(date.EventStart).isSame(moment(previousDate.EventStart), 'day');
+
+
+  }
+
+  duration(first, second) {
+    return moment(second).diff(moment(first), 'hours', true).toFixed(1)
+
+  }
+
+
   isActive(start, stop) {
     var now = moment();
     return moment(start).isBefore(now) && moment(stop).set('year', now.get('year')).isAfter(now);
@@ -82,6 +98,33 @@ class UtsaSchedScheduleController {
 
   isOddDay(date) {
     return moment(date).get('date') % 2 == 1;
+  }
+
+  isToday(date) {
+    return moment(date).format("DD.MM.YYYY") === moment().format("DD.MM.YYYY");
+  }
+
+  completed(status) {
+    return status.indexOf("Completed") > -1
+
+  }
+
+  cancelled(status) {
+    return status.indexOf("Cancelled") > -1
+
+  }
+
+  show(item, selected) {
+    return selected.indexOf(item) != -1;
+  }
+
+  toggle(item, selected) {
+    if (selected.indexOf(item) != -1) {
+      selected.pop(item)
+    } else {
+      selected.push(item)
+    }
+
   }
 
 
@@ -95,7 +138,8 @@ UtsaSchedScheduleController.$inject = [
   '$stateParams',
   '$log',
   'UtsaSchedScheduleService',
-  '$mdDialog'
+  '$mdDialog',
+  '$mdMedia'
 ];
 
 export default UtsaSchedScheduleController;

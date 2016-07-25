@@ -1,5 +1,5 @@
 
-function utsaSchedSchedulerToolbar(UtsaSchedScheduleService,$interval) {
+function utsaSchedSchedulerToolbar(UtsaSchedScheduleService,$interval,$location) {
   let directive = {
     restrict: 'E',
     templateUrl: 'src/components/schedule/utsaSched-schedule-toolbar.tpl.html',
@@ -9,6 +9,7 @@ function utsaSchedSchedulerToolbar(UtsaSchedScheduleService,$interval) {
 
   function link(scope, element, attrs) {
     scope.UtsaSchedScheduleService=UtsaSchedScheduleService;
+    scope.$location=$location;
     var tick = function() {
       scope.clock = Date.now();
     }
@@ -17,6 +18,6 @@ function utsaSchedSchedulerToolbar(UtsaSchedScheduleService,$interval) {
   }
 }
 
-utsaSchedSchedulerToolbar.$inject = ['UtsaSchedScheduleService','$interval'];
+utsaSchedSchedulerToolbar.$inject = ['UtsaSchedScheduleService','$interval','$location'];
 
 export default utsaSchedSchedulerToolbar;

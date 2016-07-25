@@ -7,7 +7,6 @@ import 'restangular';
 import "angular-dynamic-locale";
 import "angular-translate";
 import "angular-translate-loader-static-files";
-
 // Import utsaSched Core Modules
 //import './authenticator/authenticatorModule';
 import './navigator/navigatorModule';
@@ -39,15 +38,19 @@ angular.module('utsaSched.core', [
 
   // Inject utsaSched Core Modules
   'utsaSched.core.navigator',
-  'utsaSched.core.version'
+  'utsaSched.core.version',
+
 ])
 
   .constant('utsaSchedRestUrl', 'http://www.talon.kiachma.webfactional.com')
-  .config(function (RestangularProvider, utsaSchedRestUrl,$mdThemingProvider) {
+  // .constant('utsaSchedRestUrl', 'http://127.0.0.1:10194')
+
+  .config(function (RestangularProvider, utsaSchedRestUrl, $mdThemingProvider) {
 
 
     $mdThemingProvider.theme('default')
       .primaryPalette('green')
+
 
       .accentPalette('orange');
     // Sets the base address to the CS

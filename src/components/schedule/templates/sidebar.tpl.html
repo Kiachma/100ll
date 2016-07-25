@@ -1,0 +1,57 @@
+<md-toolbar ng-cloak
+            ng-class="{'md-warn': UtsaSchedScheduleService.data.condition == 'Standby','md-primary': UtsaSchedScheduleService.data.condition == 'Unrestricted','md-accent':UtsaSchedScheduleService.data.condition != 'Unrestricted' && UtsaSchedScheduleService.data.condition != 'Standby' }">
+  <h1 class="md-toolbar-tools">Schedule</h1>
+</md-toolbar>
+<md-list>
+  <md-list-item>
+    <p>Cancelled</p>
+    <md-switch class="toolbar-small-text" ng-model="UtsaSchedScheduleService.data.showCancelled"
+               aria-label="Show cancelled">
+
+    </md-switch>
+  </md-list-item>
+  <md-list-item>
+    <p>Completed</p>
+    <md-switch class="toolbar-small-text" ng-model="UtsaSchedScheduleService.data.showCompleted"
+               aria-label="Show completed">
+
+    </md-switch>
+  </md-list-item>
+  <md-divider></md-divider>
+  <md-list-item>
+    <p>Keep date updated</p>
+    <md-switch class="toolbar-small-text" ng-model="UtsaSchedScheduleService.data.todayPlusFive"
+               ng-change="UtsaSchedScheduleService.fetchAll()"
+               aria-label="Today +5">
+
+    </md-switch>
+  </md-list-item>
+  <md-list-item>
+    <p>Start date</p>
+    <md-datepicker ng-disabled="UtsaSchedScheduleService.data.todayPlusFive"
+                   ng-change="UtsaSchedScheduleService.fetchAll()" ng-model="UtsaSchedScheduleService.data.startDate"
+                   md-placeholder="Enter start date"></md-datepicker>
+  </md-list-item>
+  <md-list-item>
+    <p>End date</p>
+    <md-datepicker ng-disabled="UtsaSchedScheduleService.data.todayPlusFive"
+                   ng-change="UtsaSchedScheduleService.fetchAll()" ng-model="UtsaSchedScheduleService.data.endDate"
+                   md-placeholder="Enter end date"></md-datepicker>
+  </md-list-item>
+
+  <md-divider></md-divider>
+  <md-list-item>
+    <p>
+      <i><a href="http://endu.kiachma.webfactional.com/endu.m3u">
+        <md-icon md-font-set="material-icons">headset_mic
+        </md-icon>
+        Listen to ENDU TWR/APP </a><b>(BETA)</b></i>
+    </p>
+  </md-list-item>
+  <md-list-item>
+    <div class="toolbar-small-text"> {{UtsaSchedScheduleService.data.endu.metar}}</div>
+  </md-list-item>
+  <md-list-item>
+    <div class="toolbar-small-text"> {{UtsaSchedScheduleService.data.endu.taf}}</div>
+  </md-list-item>
+</md-list>

@@ -1,29 +1,26 @@
 <div ng-hide="showSearch" layout="row" class="md-toolbar-tools">
-  <h3 flex="5" hide-sm hide-md>Schedule</h3>
-  <md-switch class="toolbar-small-text" ng-model="UtsaSchedScheduleService.data.showCancelled"
-             aria-label="Show cancelled">
-    Cancelled
-  </md-switch>
-  <md-switch class="toolbar-small-text" ng-model="UtsaSchedScheduleService.data.showCompleted"
-             aria-label="Show completed">
-    Completed
-  </md-switch>
-  <span hide-sm hide-md class="toolbar-small-text"> {{UtsaSchedScheduleService.data.endu['Raw-Report']}}</span>
-  <span flex></span>
-  <md-button  class="md-icon-button" aria-label="Search" ng-click="showSearch = !showSearch">
-    <md-icon md-font-set="material-icons">search
 
-    </md-icon>
-  </md-button>
-  <div flex="auto" class="md-toolbar-tools" layout="row">
+  <div hide-sm hide-xs  class="toolbar-small-text"> {{UtsaSchedScheduleService.data.endu.metar}}</div>
+  <div hide-sm hide-xs  class="toolbar-small-text"> {{UtsaSchedScheduleService.data.endu.taf}}</div>
 
+  <div flex   hide-sm hide-xs  layout-align="center center"><div>{{$location.host()}}</div></div>
 
+  <div   class="md-toolbar-tools" layout="row" layout-align="end center">
+    <md-button class="md-icon-button" aria-label="Search" ng-click="showSearch = !showSearch">
+      <md-icon md-font-set="material-icons">search
 
-    <md-icon hide-sm hide-md md-font-set="material-icons">cloud</md-icon>
-    <p hide-sm hide-md>{{UtsaSchedScheduleService.data.condition}}</p>
+      </md-icon>
+    </md-button>
 
-    <md-icon hide-sm hide-md md-font-set="material-icons">access_time</md-icon>
-    <p hide-sm hide-md>{{ clock | date:'HH:mm:ss'}} {{ clock | date:'HH:mm:ss' : "UTC"}} </p>
+    <div>
+      <md-icon md-font-set="material-icons">cloud</md-icon>
+    </div>
+    <p> &nbsp {{UtsaSchedScheduleService.data.condition}} &nbsp&nbsp</p>
+
+    <div>
+      <md-icon hide-sm hide-xs hide-md md-font-set="material-icons">access_time</md-icon>
+    </div>
+      <p hide-sm hide-xs hide-md> &nbsp {{ clock | date:'HH:mm:ss'}}  </p>
 
   </div>
 </div>
