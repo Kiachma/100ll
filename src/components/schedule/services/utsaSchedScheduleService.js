@@ -98,7 +98,7 @@ class UtsaSchedScheduleService {
     var fetchENDUMetarTaf = function () {
       return self.$q.all([
         self.$http({
-          url:self.utsaSchedRestUrl + "/weather/",
+          url:self.utsaSchedRestUrl + "/weather/ENDU",
           method: 'GET',
         }),
       ]).then(function success(result) {
